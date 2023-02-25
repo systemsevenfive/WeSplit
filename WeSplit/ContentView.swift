@@ -51,6 +51,7 @@ struct ContentView: View {
                     Picker("Tip percentage", selection: $tipPercentage) {
                         ForEach(tipPercentages, id: \.self) {
                             Text($0, format: .percent)
+                                .foregroundColor($0 == 0 ? .red : .black)
                         }
                     }
                     .pickerStyle(.navigationLink)
@@ -60,6 +61,7 @@ struct ContentView: View {
                 
                 Section {
                     Text(subtotal, format: currency)
+                        .foregroundColor(tipPercentage > 0 ? .black : .red)
                 } header: {
                     Text("Subtotal")
                 }
